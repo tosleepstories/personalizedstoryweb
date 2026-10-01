@@ -364,3 +364,5 @@ code { background: var(--gold-soft); padding: 1px 5px; border-radius: 4px; }
 @media (max-width: 760px) { .thanks-steps .steps { grid-template-columns: 1fr; } }
 .thanks-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
 .btn-outline { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+.pilot-link { color: #f2d48a; font-family: var(--sans); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.pilot-link:hover { text-decoration: underline; }

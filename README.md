@@ -1,12 +1,12 @@
 # Partner pitch + trial website (GitHub Pages)
 
 One static page for personalised-gift and photo-book companies: hero, real samples, how it works,
-why partner, fulfilment options, pilot terms, photo/child-data policy, the trial order form, FAQ.
+why partner, fulfilment options, partner pilot (no prices shown), photo/child-data policy, the trial order form, FAQ.
 `thanks.html` is where the form lands after a successful send.
 
 Facts on the page come from `../personalizedstory/partner/` (COMMERCIAL_OFFER.md, outreach/PILOT_OFFER.md,
 PHOTO_AND_CHILD_DATA.md, API.md, PRINT_CHECKLIST.md, SAMPLE_ROSTER.md). If those terms change, update
-the page text (pilot section, "Low cost per book" card, FAQ "What does it cost?").
+the page text (pilot section, "Free trial ebooks" card, FAQ "What does it cost?"). Pricing is deliberately "on request".
 Images in `assets/` are compressed web copies of the sample-kit books (jobs 1, 2 and the Aug/Sept family jobs).
 
 
