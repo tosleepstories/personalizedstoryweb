@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Personalized Story — trial</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow" id="brand-eyebrow">My Personalized Story</p>
+      <h1>A picture book that looks like their family</h1>
+      <p class="lede">
+        The child, the baby, the pet — painted as themselves. This page is a trial:
+        send photos and names, and we email you a finished PDF.
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>A sample</h2>
+      <p class="lede">Same kind of book you would get. Faces from family photos, story written for that family.</p>
+      <figure class="cover-hero">
+        <img src="assets/sample-cover.jpg" alt="Sample personalized picture-book cover" />
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>How this trial works</h2>
+      <ol class="steps">
+        <li><strong>You send photos</strong> Names, who is in the book, and a work email.</li>
+        <li><strong>We make the book</strong> This trial is made for you. You are not running the system yourself.</li>
+        <li><strong>We email the PDF</strong> Usually within two working days. The live product on your site would return print files the same way, without us in the customer’s inbox.</li>
+      </ol>
+    </section>
+
+    <form id="form" class="card" novalidate>
+      <h2>Request a trial book</h2>
+      <p class="hint">Close, sharp photos of faces (or a pet’s head). A tiny chat picture will not look like them.</p>
+
+      <p id="setup-warn" class="hint warn hidden">
+        The form is not connected yet. Add your Forminit form ID in <code>config.js</code> — see the README.
+      </p>
+
+      <!-- Honeypot: hidden from people, bots tend to fill it. Forminit rejects
+           submissions where _gotcha has a value. Must stay empty and not required. -->
+      <div class="hp" aria-hidden="true">
+        <label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <!-- Field names follow Forminit's fi-{type}-{name} scheme; anything else is dropped. -->
+
+      <label>
+        Your name
+        <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
+      </label>
+      <label>
+        Company
+        <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
+      </label>
+      <label>
+        Work email — where we send the book
+        <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
+      </label>
+
+      <div id="step-count">
+        <label>
+          How many characters?
+          <select id="char-count" name="fi-select-characterCount">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+        <p class="hint">Maximum 6. People and pets.</p>
+        <button type="button" id="start-people">Continue</button>
+      </div>
+
+      <div id="step-person" class="hidden">
+        <p id="person-progress" class="eyebrow">Character 1 of 3</p>
+        <div id="people"></div>
+        <div class="step-nav">
+          <button type="button" class="secondary" id="prev-person">Back</button>
+          <button type="button" id="next-person">Next character</button>
+        </div>
+      </div>
+
+      <div id="step-book" class="hidden">
+        <label>
+          Story setting
+          <select name="fi-select-scenario">
+            <option value="forest_path">A Walk in the Forest</option>
+            <option value="backyard_garden">The Backyard Garden</option>
+            <option value="seaside">A Day by the Sea</option>
+            <option value="starry_hill">Stars on the Hill</option>
+            <option value="snowy_day">A Snowy Day</option>
+            <option value="birthday_picnic">A Birthday Picnic</option>
+            <option value="hidden_meadow">The Hidden Meadow</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>
+            Read-aloud age
+            <select name="fi-select-readingAge">
+              <option value="3-5">3–5</option>
+              <option value="6-9" selected>6–9</option>
+              <option value="10-12">10–12</option>
+            </select>
+          </label>
+          <label>
+            Language
+            <select name="fi-select-language">
+              <option value="english" selected>English</option>
+              <option value="portuguese">Portuguese</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <option value="german">German</option>
+              <option value="italian">Italian</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Anything we should know
+          <textarea name="fi-text-notes" maxlength="600" placeholder="Optional"></textarea>
+        </label>
+        <p class="hint">Photos are only used to make this trial book. They are not used to train models and are not posted publicly.</p>
+        <div class="step-nav">
+          <button type="button" class="secondary" id="back-book">Back</button>
+          <button type="submit" id="go">Send trial request</button>
+        </div>
+        <p id="form-status" class="hint" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <footer>
+      <p>Trial only. The finished product sits on your site: customer uploads, you print and ship, they never email us.</p>
+    </footer>
+  </main>
+  <!-- Forminit browser SDK (no API key needed for Public forms) -->
+  <script src="https://forminit.com/sdk/v1/forminit.js"></script>
+  <script src="config.js"></script>
+  <script src="form.js"></script>
+</body>
+</html>
