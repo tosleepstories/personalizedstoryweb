@@ -1,4 +1,4 @@
-// Free sample storybook request form → Forminit (https://forminit.com).
+// Free sample ebook request form → Forminit (https://forminit.com).
 // Static site, no build step. Photos are shrunk in the browser before upload.
 
 const ROLES = [
@@ -360,7 +360,7 @@ function setSending(on) {
   sending = on;
   go.disabled = on;
   document.getElementById("back-book").disabled = on;
-  go.textContent = on ? "Sending…" : "Request my sample book";
+  go.textContent = on ? "Sending…" : "Request my sample ebook";
   form.setAttribute("aria-busy", on ? "true" : "false");
 }
 

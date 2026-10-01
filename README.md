@@ -1,4 +1,4 @@
-# Free sample storybook request page (GitHub Pages)
+# Free sample ebook request page (GitHub Pages)
 
 A single static page: a short header, the request form, a strip of real sample covers and a footer.
 Partners send names and photos, you make the book and email them the finished sample. `thanks.html` is
