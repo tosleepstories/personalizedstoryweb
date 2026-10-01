@@ -1,4 +1,14 @@
-# Trial website (GitHub Pages)
+# Partner pitch + trial website (GitHub Pages)
+
+One static page for personalised-gift and photo-book companies: hero, real samples, how it works,
+why partner, fulfilment options, pilot terms, photo/child-data policy, the trial order form, FAQ.
+`thanks.html` is where the form lands after a successful send.
+
+Facts on the page come from `../personalizedstory/partner/` (COMMERCIAL_OFFER.md, outreach/PILOT_OFFER.md,
+PHOTO_AND_CHILD_DATA.md, API.md, PRINT_CHECKLIST.md, SAMPLE_ROSTER.md). If those terms change, update
+the page text (pilot section, "Low cost per book" card, FAQ "What does it cost?").
+Images in `assets/` are compressed web copies of the sample-kit books (jobs 1, 2 and the Aug/Sept family jobs).
+
 
 GitHub only hosts the page. It cannot store photos or emails. Submissions go to **Forminit** (formerly Getform, free plan), which emails you and keeps the files. Plain static files, no build step.
 
@@ -30,7 +40,7 @@ Create a new **public** repo (or a `gh-pages` branch) that contains only this fo
 - `styles.css`
 - `form.js`
 - `config.js`
-- `assets/sample-cover.jpg`
+- `assets/` (sample covers, inside spread, likeness portraits, logo)
 
 GitHub → Settings → Pages → Deploy from branch `main` / `/ (root)`.
 

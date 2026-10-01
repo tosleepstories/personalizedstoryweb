@@ -3,142 +3,438 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Personalized Story — trial</title>
+  <title>Personalised storybooks for gift &amp; photo-book partners | To Sleep Stories</title>
+  <meta name="description" content="A personalised picture book starring your customer's family, drawn from their photos. Print-ready PDFs for your press. Free 50-book pilot for gift and photo-book companies." />
+  <meta name="theme-color" content="#1d2742" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preload" as="image" href="assets/cover-forest-circus.jpg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <p class="eyebrow" id="brand-eyebrow">My Personalized Story</p>
-      <h1>A picture book that looks like their family</h1>
-      <p class="lede">
-        The child, the baby, the pet — painted as themselves. This page is a trial:
-        send photos and names, and we email you a finished PDF.
-      </p>
-    </header>
+  <a class="skip" href="#trial">Skip to the trial form</a>
 
-    <section class="card">
-      <h2>A sample</h2>
-      <p class="lede">Same kind of book you would get. Faces from family photos, story written for that family.</p>
-      <figure class="cover-hero">
-        <img src="assets/sample-cover.jpg" alt="Sample personalized picture-book cover" />
-      </figure>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="To Sleep Stories home">
+        <img src="assets/logo-mark.png" alt="" width="80" height="30" />
+        <span>To Sleep Stories <em>for partners</em></span>
+      </a>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#samples">Samples</a>
+        <a href="#how">How it works</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-gold btn-sm" href="#trial">Free trial order</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. HERO -->
+    <section class="hero night">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-light" id="brand-eyebrow">To Sleep Stories for partners</p>
+          <h1>Your customers’ photos, turned into a storybook that stars their family.</h1>
+          <p class="hero-lede">
+            A new gift SKU to sit next to your mugs, aprons and photo books. Customers upload a few photos and names.
+            We draw cartoon likenesses they approve, write a picture book for that family,
+            and send back print-ready PDFs for your press.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="#trial">Start a free trial order</a>
+            <a class="btn btn-ghost" href="mailto:hello@tosleepstories.com?subject=Personalised%20storybook%20for%20our%20shop">Email us</a>
+          </div>
+          <ul class="chips" aria-label="Key facts">
+            <li>8.5″ square · 24+ pages</li>
+            <li>Up to 6 people &amp; pets</li>
+            <li>Approved before payment</li>
+            <li>Free 50-book pilot</li>
+          </ul>
+        </div>
+        <div class="hero-art">
+          <figure class="book">
+            <img src="assets/cover-forest-circus.jpg" width="800" height="800" fetchpriority="high"
+                 alt="Book cover: Ben's One-Dog Forest Circus (Now With Mud), showing a boy, a baby and a Labrador in a forest" />
+          </figure>
+          <div class="cast-card" aria-label="Approved cartoon likenesses">
+            <img src="assets/likeness-ben.jpg" width="64" height="64" alt="Cartoon likeness of Ben" />
+            <img src="assets/likeness-julia.jpg" width="64" height="64" alt="Cartoon likeness of baby Julia" />
+            <img src="assets/likeness-bubu.jpg" width="64" height="64" alt="Cartoon likeness of Bubu the dog" />
+            <span>Ben, Julia &amp; Bubu<br /><small>likenesses approved</small></span>
+          </div>
+        </div>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V28C240 4 480 0 720 18s480 40 720 10v32z" fill="#f6f1e8"/></svg>
     </section>
 
-    <section class="card">
-      <h2>How this trial works</h2>
-      <ol class="steps">
-        <li><strong>You send photos</strong> Names, who is in the book, and a work email.</li>
-        <li><strong>We make the book</strong> This trial is made for you. You are not running the system yourself.</li>
-        <li><strong>We email the PDF</strong> Usually within two working days. The live product on your site would return print files the same way, without us in the customer’s inbox.</li>
-      </ol>
+    <!-- 2. SAMPLES -->
+    <section class="section" id="samples">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Real books from our sample kit</p>
+          <h2>One family, painted as themselves</h2>
+          <p class="section-lede">Every image below comes from finished print files. Nothing is a mock-up.</p>
+        </div>
+
+        <div class="likeness">
+          <div class="likeness-copy">
+            <h3>Step one: likenesses the customer approves</h3>
+            <p>From a few family photos we draw each character: child, baby, parent, grandparent, even the dog.
+              The customer sees these <strong>before paying</strong>. If a face isn’t right, we redraw it.</p>
+            <p class="small muted">We never publish customers’ own photos. That’s why only the drawings are shown here.</p>
+          </div>
+          <ul class="likeness-row">
+            <li><img src="assets/likeness-ben.jpg" width="360" height="360" loading="lazy" alt="Cartoon portrait of Ben, a boy in a white T-shirt" /><span>Ben · child</span></li>
+            <li><img src="assets/likeness-julia.jpg" width="360" height="360" loading="lazy" alt="Cartoon portrait of Julia, a baby in a flowered romper" /><span>Julia · baby</span></li>
+            <li><img src="assets/likeness-bubu.jpg" width="360" height="360" loading="lazy" alt="Cartoon portrait of Bubu, a yellow Labrador" /><span>Bubu · pet</span></li>
+          </ul>
+        </div>
+
+        <figure class="spread">
+          <img src="assets/spread-forest-circus.jpg" width="1200" height="600" loading="lazy"
+               alt="Inside spread: Ben, baby Julia and Bubu the dog at a forest picnic, facing a page of story text" />
+          <figcaption>Inside spread from <em>Ben’s One-Dog Forest Circus (Now With Mud)</em>. A story written for this family, not a name dropped into a template.</figcaption>
+        </figure>
+
+        <ul class="covers">
+          <li><figure><img src="assets/cover-sandcastle-museum.jpg" width="800" height="800" loading="lazy" alt="Cover: Ben's Sandcastle Museum (Please Do Not Lick the Exhibits), on a beach" /><figcaption>Sandcastle Museum</figcaption></figure></li>
+          <li><figure><img src="assets/cover-root-olympics.jpg" width="800" height="800" loading="lazy" alt="Cover: Ben's Root Olympics (Bubu is Winning)" /><figcaption>Root Olympics</figcaption></figure></li>
+          <li><figure><img src="assets/cover-sock-museum.jpg" width="800" height="800" loading="lazy" alt="Cover: Ben's Sock Museum and the Great Bubu Wetting, on a beach" /><figcaption>Sock Museum</figcaption></figure></li>
+          <li><figure><img src="assets/cover-mega-sprinkler.jpg" width="800" height="800" loading="lazy" alt="Cover: Ben's Mega Sprinkler and the Great Tomato Soaking, in a garden" /><figcaption>Mega Sprinkler</figcaption></figure></li>
+        </ul>
+      </div>
     </section>
 
-    <form id="form" class="card" novalidate>
-      <h2>Request a trial book</h2>
-      <p class="hint">Close, sharp photos of faces (or a pet’s head). A tiny chat picture will not look like them.</p>
-
-      <p id="setup-warn" class="hint warn hidden">
-        The form is not connected yet. Add your Forminit form ID in <code>config.js</code> — see the README.
-      </p>
-
-      <!-- Honeypot: hidden from people, bots tend to fill it. Forminit rejects
-           submissions where _gotcha has a value. Must stay empty and not required. -->
-      <div class="hp" aria-hidden="true">
-        <label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+    <!-- 3. HOW IT WORKS -->
+    <section class="section section-alt" id="how">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works for partners</p>
+          <h2>Four steps, and you keep the customer</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3>Customer uploads photos</h3>
+            <p>A few photos and first names on your site: child, parent, grandparent, pet. Plus a story setting and language.</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>We draw them and write the story</h3>
+            <p>We return cartoon previews of each character, then write a picture book for that family.</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>They approve before paying</h3>
+            <p>The customer approves the faces, or asks for a redraw, <strong>before money is taken</strong>. Then you charge.</p>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <h3>Print-ready PDF to your spec</h3>
+            <p>Interior and full cover wrap, ready for the presses you already run. You print and ship. Or we can arrange it.</p>
+          </li>
+        </ol>
+        <p class="note-line">You own the customer. <strong>We never email them.</strong></p>
       </div>
+    </section>
 
-      <!-- Field names follow Forminit's fi-{type}-{name} scheme; anything else is dropped. -->
-
-      <label>
-        Your name
-        <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
-      </label>
-      <label>
-        Company
-        <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
-      </label>
-      <label>
-        Work email — where we send the book
-        <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
-      </label>
-
-      <div id="step-count">
-        <label>
-          How many characters?
-          <select id="char-count" name="fi-select-characterCount">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </label>
-        <p class="hint">Maximum 6. People and pets.</p>
-        <button type="button" id="start-people">Continue</button>
-      </div>
-
-      <div id="step-person" class="hidden">
-        <p id="person-progress" class="eyebrow">Character 1 of 3</p>
-        <div id="people"></div>
-        <div class="step-nav">
-          <button type="button" class="secondary" id="prev-person">Back</button>
-          <button type="button" id="next-person">Next character</button>
+    <!-- 4. WHY PARTNER -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Why partner with us</p>
+          <h2>A gift SKU you don’t sell today, on presses you already run</h2>
+        </div>
+        <div class="features">
+          <article>
+            <span class="f-icon" aria-hidden="true">☺</span>
+            <h3>They look like themselves</h3>
+            <p>Child, family and pet are drawn from their photos, and every likeness is approved by the buyer before print.</p>
+          </article>
+          <article>
+            <span class="f-icon" aria-hidden="true">✎</span>
+            <h3>A new story every time</h3>
+            <p>Seven settings, from a walk in the forest to a snowy day. Three read-aloud age bands. Up to six characters.</p>
+          </article>
+          <article>
+            <span class="f-icon" aria-hidden="true">✦</span>
+            <h3>Six languages</h3>
+            <p>English, Portuguese, Spanish, French, German and Italian. The same book in the language your shop sells in.</p>
+          </article>
+          <article>
+            <span class="f-icon" aria-hidden="true">▤</span>
+            <h3>Fits your print line</h3>
+            <p>8.5″ square with standard bleed and a full cover wrap. We don’t ask you to change presses.</p>
+          </article>
+          <article>
+            <span class="f-icon" aria-hidden="true">€</span>
+            <h3>Low cost per book</h3>
+            <p>Free for your first 50 books. After that, €8 per book for generation, or 20% of your retail price. Your choice.</p>
+          </article>
+          <article>
+            <span class="f-icon" aria-hidden="true">⇄</span>
+            <h3>No integration to start</h3>
+            <p>Try it today with the form below. When you go live, a simple job API sends photos and names in and returns print PDFs.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div id="step-book" class="hidden">
-        <label>
-          Story setting
-          <select name="fi-select-scenario">
-            <option value="forest_path">A Walk in the Forest</option>
-            <option value="backyard_garden">The Backyard Garden</option>
-            <option value="seaside">A Day by the Sea</option>
-            <option value="starry_hill">Stars on the Hill</option>
-            <option value="snowy_day">A Snowy Day</option>
-            <option value="birthday_picnic">A Birthday Picnic</option>
-            <option value="hidden_meadow">The Hidden Meadow</option>
-          </select>
-        </label>
-        <div class="row">
+    <!-- 5. FULFILMENT -->
+    <section class="section section-alt" id="fulfilment">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Two ways to fulfil</p>
+          <h2>Print it yourself, or let us handle it</h2>
+        </div>
+        <div class="options">
+          <article class="option option-main">
+            <p class="option-tag">Recommended</p>
+            <h3>You print</h3>
+            <p>We send print-ready files. You print and post them like your other photo books.</p>
+            <ul class="ticks">
+              <li><strong>Interior.pdf</strong>: 8.5″ × 8.5″ trim plus 0.125″ bleed (8.75″ page), 24 pages or more</li>
+              <li><strong>Full cover wrap.pdf</strong>: back, spine and front with the same bleed</li>
+              <li>Separate front, spine and back files if your RIP prefers them</li>
+              <li>Colour; glossy or matte laminated hardcover works well. Don’t scale to A4.</li>
+              <li>If our PDF is ever the wrong spec, we regenerate it at our cost</li>
+            </ul>
+          </article>
+          <article class="option">
+            <p class="option-tag option-tag-muted">No book press?</p>
+            <h3>We print &amp; ship</h3>
+            <p>If you don’t print books in-house, we can arrange printing and delivery through a print-on-demand partner. You keep selling the product and owning the customer.</p>
+            <ul class="ticks">
+              <li>Same approved book, same files</li>
+              <li>Shipped to your customer</li>
+              <li>Pricing on request</li>
+            </ul>
+            <a class="text-link" href="mailto:hello@tosleepstories.com?subject=Print%20and%20ship%20option">Ask about print &amp; ship →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILOT -->
+    <section class="section pilot night" id="pilot">
+      <div class="stars stars-soft" aria-hidden="true"></div>
+      <div class="container pilot-grid">
+        <div>
+          <p class="eyebrow eyebrow-light">Free 50-book pilot</p>
+          <h2>Sell it first. Pay us later.</h2>
+          <p class="pilot-lede">No licence fee before you’ve sold a copy.</p>
+        </div>
+        <ul class="pilot-terms">
+          <li><strong>90 days</strong>, in one country</li>
+          <li>You keep <strong>100% of retail</strong> on the first 50 paid orders</li>
+          <li>We pay the AI costs, including <strong>one redraw per order</strong> if needed</li>
+          <li>Afterwards: <strong>€8 per book</strong> or <strong>20% of your retail</strong>, your choice</li>
+          <li>Optional exclusivity in that one country during the pilot</li>
+          <li>Either side can stop with 14 days’ notice</li>
+          <li class="muted-light">We ask for: the SKU live on a real product page, plus weekly notes on which faces were accepted or rejected</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. PRIVACY -->
+    <section class="section" id="privacy">
+      <div class="container">
+        <div class="privacy">
+          <div class="privacy-badge" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="48" height="48"><path d="M24 4l16 6v12c0 10-7 18-16 22C15 40 8 32 8 22V10z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 24l5 5 9-10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Photos and children’s data</p>
+            <h2>Careful with children’s photos</h2>
+            <ul class="privacy-list">
+              <li>Photos are used <strong>only to make that one book</strong>, and are <strong>never used to train</strong> image or language models.</li>
+              <li>Source photos are <strong>deleted after 7 days</strong>, or sooner on request. Artwork and PDFs are kept up to 30 days for reprints, then deleted.</li>
+              <li>We don’t need your customers’ emails, addresses or payment details. Those stay with you.</li>
+              <li>We don’t profile children, build audiences from faces, or put photos in ads. For EU/UK orders we act as processor; you’re the controller.</li>
+            </ul>
+            <p class="small muted">Trial photos sent through the form below are used only to make your sample book and are never posted publicly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TRIAL FORM -->
+    <section class="section section-alt" id="trial">
+      <div class="container trial-grid">
+        <div class="trial-intro">
+          <p class="eyebrow">Free trial order</p>
+          <h2>Try it with a real order</h2>
+          <p class="section-lede">Send us photos and we’ll return a finished sample book. It’s the same PDF your customer would get, usually within two working days.</p>
+          <ol class="mini-steps">
+            <li>Your details</li>
+            <li>Who’s in the book: name, role and 1–3 photos each</li>
+            <li>Story setting, age and language</li>
+          </ol>
+          <div class="photo-tip">
+            <strong>Photo tip</strong>
+            <p>Close, sharp photos of faces (or a pet’s head) work best. A tiny chat picture won’t look like them.</p>
+          </div>
+        </div>
+
+        <form id="form" class="form-card" novalidate>
+          <h3 class="form-title">Request a trial book</h3>
+
+          <p id="setup-warn" class="hint warn hidden">
+            The form is not connected yet. Add your Forminit form ID in <code>config.js</code>. See the README.
+          </p>
+
+          <!-- Honeypot: hidden from people, bots tend to fill it. Forminit rejects
+               submissions where _gotcha has a value. Must stay empty and not required. -->
+          <div class="hp" aria-hidden="true">
+            <label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <!-- Field names follow Forminit's fi-{type}-{name} scheme; anything else is dropped. -->
+
+          <div class="row">
+            <label>
+              Your name
+              <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
+            </label>
+            <label>
+              Company
+              <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
+            </label>
+          </div>
           <label>
-            Read-aloud age
-            <select name="fi-select-readingAge">
-              <option value="3-5">3–5</option>
-              <option value="6-9" selected>6–9</option>
-              <option value="10-12">10–12</option>
-            </select>
+            Work email (where we send the book)
+            <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
           </label>
-          <label>
-            Language
-            <select name="fi-select-language">
-              <option value="english" selected>English</option>
-              <option value="portuguese">Portuguese</option>
-              <option value="spanish">Spanish</option>
-              <option value="french">French</option>
-              <option value="german">German</option>
-              <option value="italian">Italian</option>
-            </select>
-          </label>
-        </div>
-        <label>
-          Anything we should know
-          <textarea name="fi-text-notes" maxlength="600" placeholder="Optional"></textarea>
-        </label>
-        <p class="hint">Photos are only used to make this trial book. They are not used to train models and are not posted publicly.</p>
-        <div class="step-nav">
-          <button type="button" class="secondary" id="back-book">Back</button>
-          <button type="submit" id="go">Send trial request</button>
-        </div>
-        <p id="form-status" class="hint" role="status" aria-live="polite"></p>
-      </div>
-    </form>
 
-    <footer>
-      <p>Trial only. The finished product sits on your site: customer uploads, you print and ship, they never email us.</p>
-    </footer>
+          <div id="step-count">
+            <label>
+              How many characters?
+              <select id="char-count" name="fi-select-characterCount">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </label>
+            <p class="hint">Maximum 6, people and pets.</p>
+            <button type="button" id="start-people">Continue</button>
+          </div>
+
+          <div id="step-person" class="hidden">
+            <p id="person-progress" class="eyebrow">Character 1 of 3</p>
+            <div id="people"></div>
+            <div class="step-nav">
+              <button type="button" class="secondary" id="prev-person">Back</button>
+              <button type="button" id="next-person">Next character</button>
+            </div>
+          </div>
+
+          <div id="step-book" class="hidden">
+            <label>
+              Story setting
+              <select name="fi-select-scenario">
+                <option value="forest_path">A Walk in the Forest</option>
+                <option value="backyard_garden">The Backyard Garden</option>
+                <option value="seaside">A Day by the Sea</option>
+                <option value="starry_hill">Stars on the Hill</option>
+                <option value="snowy_day">A Snowy Day</option>
+                <option value="birthday_picnic">A Birthday Picnic</option>
+                <option value="hidden_meadow">The Hidden Meadow</option>
+              </select>
+            </label>
+            <div class="row">
+              <label>
+                Read-aloud age
+                <select name="fi-select-readingAge">
+                  <option value="3-5">3–5</option>
+                  <option value="6-9" selected>6–9</option>
+                  <option value="10-12">10–12</option>
+                </select>
+              </label>
+              <label>
+                Language
+                <select name="fi-select-language">
+                  <option value="english" selected>English</option>
+                  <option value="portuguese">Portuguese</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="french">French</option>
+                  <option value="german">German</option>
+                  <option value="italian">Italian</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Anything we should know
+              <textarea name="fi-text-notes" maxlength="600" placeholder="Optional: your product, print spec, or what you’d like to see"></textarea>
+            </label>
+            <p class="hint">Photos are only used to make this trial book. They are not used to train models and are not posted publicly.</p>
+            <div class="step-nav">
+              <button type="button" class="secondary" id="back-book">Back</button>
+              <button type="submit" id="go">Send trial request</button>
+            </div>
+            <p id="form-status" class="hint" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="section" id="faq">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">Questions partners ask</p>
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What does it cost?</summary>
+            <p>The pilot is free: for 90 days in one country, you keep 100% of retail on your first 50 paid orders and we cover the AI costs. After that it’s €8 per book for generation, or 20% of your retail price, whichever you choose. Printing, shipping and pricing to your customer stay with you.</p>
+          </details>
+          <details>
+            <summary>What if a cartoon doesn’t look like the child?</summary>
+            <p>The customer approves every likeness before paying. If a face isn’t right, we redraw it, or the order is cancelled before print. During the pilot we pay for the redraw. You handle the message to your customer.</p>
+          </details>
+          <details>
+            <summary>What files do we get, and will they fit our press?</summary>
+            <p>An interior PDF (8.5″ square trim, 0.125″ bleed, 24+ pages) and a full cover wrap (back, spine, front). Separate front, spine and back files are available too. If a PDF is ever the wrong spec, we regenerate it at our cost.</p>
+          </details>
+          <details>
+            <summary>Do we need developers to start?</summary>
+            <p>Not for a trial: send a real order through the form above. For a live product page, your team connects to our job API: photos and names in, cartoon previews out, print PDFs back after approval.</p>
+          </details>
+          <details>
+            <summary>Who talks to the customer?</summary>
+            <p>You do. You sell, charge and support the customer. We only receive photos, first names and story choices, and we never email your customers.</p>
+          </details>
+          <details>
+            <summary>Which stories, ages and languages are available?</summary>
+            <p>Seven settings (forest walk, backyard garden, seaside, stars on the hill, snowy day, birthday picnic, hidden meadow), read-aloud ages 3–5, 6–9 and 10–12, up to six characters, in English, Portuguese, Spanish, French, German or Italian.</p>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer night">
+    <div class="stars stars-soft" aria-hidden="true"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="To Sleep Stories" width="96" height="84" loading="lazy" />
+        <p>Personalised picture books for gift and photo-book partners.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>
+        <a href="https://tosleepstories.com">tosleepstories.com</a>
+        <a href="#trial">Start a free trial order</a>
+      </div>
+    </div>
+    <p class="container footer-fine">© 2026 To Sleep Stories</p>
+  </footer>
+
   <!-- Forminit browser SDK (no API key needed for Public forms) -->
   <script src="https://forminit.com/sdk/v1/forminit.js"></script>
   <script src="config.js"></script>
