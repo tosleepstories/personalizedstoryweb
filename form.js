@@ -53,7 +53,7 @@ let sending = false;
 const photoJobs = [];
 
 if (SITE.brand) {
-  document.title = SITE.brand + " — free sample storybook";
+  document.title = SITE.brand + " — free sample ebook";
   const brand = document.getElementById("brand-eyebrow");
   if (brand) brand.textContent = SITE.brand;
 }
