@@ -1,14 +1,12 @@
-# Partner pitch + trial website (GitHub Pages)
+# Free sample storybook request page (GitHub Pages)
 
-One static page for personalised-gift and photo-book companies: hero, real samples, how it works,
-why partner, fulfilment options, partner pilot (no prices shown), photo/child-data policy, the trial order form, FAQ.
-`thanks.html` is where the form lands after a successful send.
+A single static page: a short header, the request form, a strip of real sample covers and a footer.
+Partners send names and photos, you make the book and email them the finished sample. `thanks.html` is
+where the form lands after a successful send. Live at `partners.tosleepstories.com` (see `CNAME`).
 
-Facts on the page come from `../personalizedstory/partner/` (COMMERCIAL_OFFER.md, outreach/PILOT_OFFER.md,
-PHOTO_AND_CHILD_DATA.md, API.md, PRINT_CHECKLIST.md, SAMPLE_ROSTER.md). If those terms change, update
-the page text (pilot section, "Free trial ebooks" card, FAQ "What does it cost?"). Pricing is deliberately "on request".
-Images in `assets/` are compressed web copies of the sample-kit books (jobs 1, 2 and the Aug/Sept family jobs).
-
+Form steps: 1) how many people/pets (default 1) plus contact details, 2) one card per character
+(name, role, age for children, 1–3 photos), 3) story setting, read-aloud age, language, notes.
+Sample covers in `assets/` are compressed web copies of the partner sample-kit books.
 
 GitHub only hosts the page. It cannot store photos or emails. Submissions go to **Forminit** (formerly Getform, free plan), which emails you and keeps the files. Plain static files, no build step.
 
@@ -40,7 +38,8 @@ Create a new **public** repo (or a `gh-pages` branch) that contains only this fo
 - `styles.css`
 - `form.js`
 - `config.js`
-- `assets/` (sample covers, inside spread, likeness portraits, logo)
+- `CNAME`
+- `assets/` (sample covers and logo)
 
 GitHub → Settings → Pages → Deploy from branch `main` / `/ (root)`.
 

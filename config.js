@@ -1,6 +1,6 @@
 ﻿// Site settings. This is the only file you should need to edit (see README).
 window.SITE = {
-  brand: "To Sleep Stories for partners",
+  brand: "To Sleep Stories",
 
   // Your Forminit form ID: the last part of https://forminit.com/f/<FORM_ID>.
   // The form must be set to "Public" mode in Forminit (no API key on a static site).
