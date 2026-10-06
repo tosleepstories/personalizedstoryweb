@@ -8,6 +8,6 @@ window.SITE = {
 
   // Photo limits. Forminit allows 25 MB of files per submission and the free
   // plan has 100 MB of storage in total, so photos are shrunk in the browser.
-  maxPhotosPerCharacter: 3,
+  maxPhotosPerCharacter: 1,
   maxTotalUploadMB: 20,
 };
