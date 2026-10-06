@@ -45,6 +45,15 @@ a { color: var(--gold-deep); }
 .brand img { height: 24px; width: auto; }
 .masthead h1 { margin: 0 0 6px; font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.15; color: #fffaf2; }
 .lede { margin: 0; font-size: 1.05rem; color: #e6dfd2; max-width: 40em; }
+/* Language picker: small, top right of the masthead (filled in by i18n.js) */
+.lang-picker { position: absolute; top: 0; right: 20px; }
+.lang-picker select {
+  width: auto; margin: 0; padding: 2px 6px;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+  color: #e9c77a; background: transparent; border: 1px solid rgba(233, 199, 122, 0.4); border-radius: 999px; cursor: pointer;
+}
+.lang-picker select:hover { border-color: #e9c77a; }
+.lang-picker option { color: var(--ink); background: #fff; }
 
 /* ---- Form + samples ---- */
 .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: start; margin-top: -44px; position: relative; }

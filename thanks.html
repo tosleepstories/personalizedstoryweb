@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thanks, we’ve got your photos | To Sleep Stories</title>
+  <title data-i18n="thanks.title">Thanks, we’ve got your photos | To Sleep Stories</title>
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#1d2742" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
@@ -14,22 +14,26 @@
   <header class="masthead night">
     <div class="stars" aria-hidden="true"></div>
     <div class="container masthead-inner">
+      <div class="lang-picker" id="lang-picker"></div>
       <p class="brand"><img src="assets/logo-mark.png" alt="" width="64" height="24" /><span>To Sleep Stories</span></p>
-      <h1>Thanks, we’ve got your photos</h1>
-      <p class="lede">We’ll email your finished sample ebook (a printable PDF) to you at the address you gave, usually within two working days.</p>
+      <h1 data-i18n="thanks.h1">Thanks, we’ve got your photos</h1>
+      <p class="lede" data-i18n="thanks.lede">We’ll email your finished sample ebook (a printable PDF) to you at the address you gave, usually within two working days.</p>
     </div>
   </header>
 
   <main class="container thanks">
     <div class="form-card">
-      <p>If a photo is too small or blurry to make a good likeness, we’ll email you to ask for another one.</p>
-      <p class="muted">No email from us? Check your spam folder, or write to <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>.</p>
-      <p><a class="btn-link" href="index.html">← Back to the form</a></p>
+      <p data-i18n="thanks.retake">If a photo is too small or blurry to make a good likeness, we’ll email you to ask for another one.</p>
+      <p class="muted" data-i18n-html="thanks.spam">No email from us? Check your spam folder, or write to <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>.</p>
+      <p><a class="btn-link" href="index.html" data-i18n="thanks.back">← Back to the form</a></p>
     </div>
   </main>
 
   <footer class="footer">
     <p class="container"><a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a> · <a href="https://tosleepstories.com">tosleepstories.com</a></p>
   </footer>
+
+  <!-- Translations: picks the page language and translates data-i18n text -->
+  <script src="i18n.js"></script>
 </body>
 </html>

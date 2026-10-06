@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Request your free sample ebook | To Sleep Stories</title>
-  <meta name="description" content="Send a few family photos and names, and we'll email you a finished personalised, printable picture ebook starring them." />
+  <title data-i18n="meta.title">Request your free sample ebook | To Sleep Stories</title>
+  <meta name="description" data-i18n-content="meta.description" content="Send a few family photos and names, and we'll email you a finished personalised, printable picture ebook starring them." />
   <meta name="theme-color" content="#1d2742" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="stylesheet" href="styles.css" />
@@ -14,15 +14,16 @@
   <header class="masthead night">
     <div class="stars" aria-hidden="true"></div>
     <div class="container masthead-inner">
+      <div class="lang-picker" id="lang-picker"></div>
       <p class="brand"><img src="assets/logo-mark.png" alt="" width="64" height="24" /><span id="brand-eyebrow">To Sleep Stories</span></p>
-      <h1>Request your free sample ebook</h1>
-      <p class="lede">Send a few photos and names, and we’ll email you a finished, printable picture ebook (PDF) starring that family.</p>
+      <h1 data-i18n="index.h1">Request your free sample ebook</h1>
+      <p class="lede" data-i18n="index.lede">Send a few photos and names, and we’ll email you a finished, printable picture ebook (PDF) starring that family.</p>
     </div>
   </header>
 
   <main class="container layout">
     <form id="form" class="form-card" novalidate>
-      <p id="setup-warn" class="hint warn hidden">
+      <p id="setup-warn" class="hint warn hidden" data-i18n-html="setup.warn">
         The form is not connected yet. Add your Forminit form ID in <code>config.js</code>. See the README.
       </p>
 
@@ -37,7 +38,7 @@
       <!-- Step 1: how many characters (asked first), then contact details -->
       <div id="step-count">
         <label>
-          How many characters are in this book?
+          <span data-i18n="count.label">How many characters are in this book?</span>
           <select id="char-count" name="fi-select-characterCount">
             <option value="1" selected>1</option>
             <option value="2">2</option>
@@ -49,49 +50,49 @@
         </label>
         <div class="row">
           <label>
-            Your name
+            <span data-i18n="contact.name">Your name</span>
             <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
           </label>
           <label>
-            Company
+            <span data-i18n="contact.company">Company</span>
             <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
           </label>
         </div>
         <label>
-          Work email (where we send the book)
+          <span data-i18n="contact.email">Work email (where we send the book)</span>
           <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
         </label>
-        <button type="button" id="start-people">Continue</button>
+        <button type="button" id="start-people" data-i18n="btn.continue">Continue</button>
       </div>
 
       <!-- Step 2: one card per character -->
       <div id="step-person" class="hidden">
-        <p id="person-progress" class="step-label">Character 1 of 1</p>
-        <p class="hint">Close, sharp photos of faces (or a pet’s head) work best. A tiny chat picture won’t look like them.</p>
+        <p id="person-progress" class="step-label" data-i18n="progress.many" data-i18n-vars='{"n":1,"total":1}'>Character 1 of 1</p>
+        <p class="hint" data-i18n="person.hint">Close, sharp photos of faces (or a pet’s head) work best. A tiny chat picture won’t look like them.</p>
         <div id="people"></div>
         <div class="step-nav">
-          <button type="button" class="secondary" id="prev-person">Back</button>
-          <button type="button" id="next-person">Continue to the story</button>
+          <button type="button" class="secondary" id="prev-person" data-i18n="btn.back">Back</button>
+          <button type="button" id="next-person" data-i18n="btn.toStory">Continue to the story</button>
         </div>
       </div>
 
       <!-- Step 3: story options and send -->
       <div id="step-book" class="hidden">
         <label>
-          Story setting
+          <span data-i18n="book.setting">Story setting</span>
           <select name="fi-select-scenario">
-            <option value="forest_path">A Walk in the Forest</option>
-            <option value="backyard_garden">The Backyard Garden</option>
-            <option value="seaside">A Day by the Sea</option>
-            <option value="starry_hill">Stars on the Hill</option>
-            <option value="snowy_day">A Snowy Day</option>
-            <option value="birthday_picnic">A Birthday Picnic</option>
-            <option value="hidden_meadow">The Hidden Meadow</option>
+            <option value="forest_path" data-i18n="scenario.forest_path">A Walk in the Forest</option>
+            <option value="backyard_garden" data-i18n="scenario.backyard_garden">The Backyard Garden</option>
+            <option value="seaside" data-i18n="scenario.seaside">A Day by the Sea</option>
+            <option value="starry_hill" data-i18n="scenario.starry_hill">Stars on the Hill</option>
+            <option value="snowy_day" data-i18n="scenario.snowy_day">A Snowy Day</option>
+            <option value="birthday_picnic" data-i18n="scenario.birthday_picnic">A Birthday Picnic</option>
+            <option value="hidden_meadow" data-i18n="scenario.hidden_meadow">The Hidden Meadow</option>
           </select>
         </label>
         <div class="row">
           <label>
-            Read-aloud age
+            <span data-i18n="book.readingAge">Read-aloud age</span>
             <select name="fi-select-readingAge">
               <option value="3-5">3–5</option>
               <option value="6-9" selected>6–9</option>
@@ -99,38 +100,38 @@
             </select>
           </label>
           <label>
-            Language
+            <span data-i18n="book.language">Language</span>
             <select name="fi-select-language">
-              <option value="english" selected>English</option>
-              <option value="portuguese">Portuguese</option>
-              <option value="spanish">Spanish</option>
-              <option value="french">French</option>
-              <option value="german">German</option>
-              <option value="italian">Italian</option>
+              <option value="english" selected data-i18n="booklang.english">English</option>
+              <option value="portuguese" data-i18n="booklang.portuguese">Portuguese</option>
+              <option value="spanish" data-i18n="booklang.spanish">Spanish</option>
+              <option value="french" data-i18n="booklang.french">French</option>
+              <option value="german" data-i18n="booklang.german">German</option>
+              <option value="italian" data-i18n="booklang.italian">Italian</option>
             </select>
           </label>
         </div>
         <label>
-          Anything we should know
-          <textarea name="fi-text-notes" maxlength="600" placeholder="Optional"></textarea>
+          <span data-i18n="book.notes">Anything we should know</span>
+          <textarea name="fi-text-notes" maxlength="600" placeholder="Optional" data-i18n-placeholder="book.notesPlaceholder"></textarea>
         </label>
         <div class="step-nav">
-          <button type="button" class="secondary" id="back-book">Back</button>
-          <button type="submit" id="go">Request my sample ebook</button>
+          <button type="button" class="secondary" id="back-book" data-i18n="btn.back">Back</button>
+          <button type="submit" id="go" data-i18n="btn.request">Request my sample ebook</button>
         </div>
         <p id="form-status" class="hint" role="status" aria-live="polite"></p>
       </div>
 
-      <p class="privacy-note">Photos are used only to make your book and are deleted after use. To ask for deletion, email <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>.</p>
+      <p class="privacy-note" data-i18n-html="privacy">Photos are used only to make your book and are deleted after use. To ask for deletion, email <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>.</p>
     </form>
 
-    <aside class="samples" aria-label="Sample covers">
-      <p class="samples-title">Real sample ebooks</p>
+    <aside class="samples" aria-label="Sample covers" data-i18n-aria-label="samples.label">
+      <p class="samples-title" data-i18n="samples.title">Real sample ebooks</p>
       <ul>
-        <li><img src="assets/cover-forest-circus.jpg" width="800" height="800" alt="Sample cover: Ben's One-Dog Forest Circus (Now With Mud)" /></li>
-        <li><img src="assets/cover-sock-museum.jpg" width="800" height="800" alt="Sample cover: Ben's Sock Museum and the Great Bubu Wetting" /></li>
-        <li><img src="assets/cover-mega-sprinkler.jpg" width="800" height="800" alt="Sample cover: Ben's Mega Sprinkler and the Great Tomato Soaking" /></li>
-        <li><img src="assets/cover-root-olympics.jpg" width="800" height="800" alt="Sample cover: Ben's Root Olympics (Bubu is Winning)" /></li>
+        <li><img src="assets/cover-forest-circus.jpg" width="800" height="800" data-i18n-alt="cover.forest" alt="Sample cover: Ben's One-Dog Forest Circus (Now With Mud)" /></li>
+        <li><img src="assets/cover-sock-museum.jpg" width="800" height="800" data-i18n-alt="cover.sock" alt="Sample cover: Ben's Sock Museum and the Great Bubu Wetting" /></li>
+        <li><img src="assets/cover-mega-sprinkler.jpg" width="800" height="800" data-i18n-alt="cover.sprinkler" alt="Sample cover: Ben's Mega Sprinkler and the Great Tomato Soaking" /></li>
+        <li><img src="assets/cover-root-olympics.jpg" width="800" height="800" data-i18n-alt="cover.root" alt="Sample cover: Ben's Root Olympics (Bubu is Winning)" /></li>
       </ul>
     </aside>
   </main>
@@ -139,6 +140,8 @@
     <p class="container"><a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a> · <a href="https://tosleepstories.com">tosleepstories.com</a></p>
   </footer>
 
+  <!-- Translations: picks the page language and translates data-i18n text (load before form.js) -->
+  <script src="i18n.js"></script>
   <!-- Forminit browser SDK (no API key needed for Public forms) -->
   <script src="https://forminit.com/sdk/v1/forminit.js"></script>
   <script src="config.js"></script>

@@ -1,6 +1,9 @@
 // Free sample ebook request form → Forminit (https://forminit.com).
 // Static site, no build step. Photos are shrunk in the browser before upload.
+// Text on screen comes from i18n.js; what is sent to Forminit stays in English.
 
+// The English labels below are what Ivo receives in the submission ("cast" lines).
+// The page shows the translated "role.*" / "age.*" text from i18n.js instead.
 const ROLES = [
   { id: "child", label: "Child" },
   { id: "adult", label: "Adult" },
@@ -13,6 +16,10 @@ const CHILD_AGES = [
   { id: "6-9", label: "6–9 years" },
   { id: "10-12", label: "10–12 years" },
 ];
+
+// ---- Translations (from i18n.js) -----------------------------------------
+const I18N = window.I18N;
+const t = I18N.t;
 
 // ---- Settings (from config.js) ------------------------------------------
 const SITE = window.SITE || {};
@@ -47,8 +54,11 @@ let sending = false;
 // photoJobs[i] = Promise<File[]> of already-compressed photos for character i.
 const photoJobs = [];
 
+function setBrandTitle() {
+  if (SITE.brand) document.title = t("doc.brandTitle", { brand: SITE.brand });
+}
 if (SITE.brand) {
-  document.title = SITE.brand + " — free sample ebook";
+  setBrandTitle();
   const brand = document.getElementById("brand-eyebrow");
   if (brand) brand.textContent = SITE.brand;
 }
@@ -61,7 +71,7 @@ function setStatus(message, kind) {
 }
 
 function formatMB(bytes) {
-  return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  return I18N.decimal(bytes / (1024 * 1024)) + " MB";
 }
 
 // Safe file-name fragment, e.g. "Zé Maria" -> "Ze-Maria".
@@ -84,8 +94,8 @@ function validEmail(value) {
 function validateContact() {
   nameInput.value = nameInput.value.trim();
   emailInput.value = emailInput.value.trim();
-  nameInput.setCustomValidity(nameInput.value ? "" : "Please add your name.");
-  emailInput.setCustomValidity(validEmail(emailInput.value) ? "" : "Please add a valid email address so we can send the book.");
+  nameInput.setCustomValidity(nameInput.value ? "" : t("check.yourName"));
+  emailInput.setCustomValidity(validEmail(emailInput.value) ? "" : t("check.email"));
   for (const input of [nameInput, emailInput]) {
     if (!input.checkValidity()) {
       input.reportValidity();
@@ -134,7 +144,7 @@ async function compressPhoto(file, baseName) {
       const ext = (file.name.match(/\.[^.]+$/) || [".img"])[0].toLowerCase();
       return new File([file], baseName + ext, { type: file.type || "application/octet-stream" });
     }
-    throw new Error(`“${file.name}” could not be read. Please use a JPEG or PNG photo.`);
+    throw new Error(t("photo.unreadable", { file: file.name }));
   }
 
   let side = MAX_SIDE;
@@ -158,7 +168,7 @@ async function compressPhoto(file, baseName) {
     }
     side = Math.round(side * 0.75);
   }
-  if (!blob) throw new Error(`“${file.name}” is too large to send. Please choose a smaller photo.`);
+  if (!blob) throw new Error(t("photo.tooLarge", { file: file.name }));
 
   // Keep the original if it is already a small JPEG and re-encoding didn't help.
   if (file.type === "image/jpeg" && file.size <= blob.size &&
@@ -170,9 +180,9 @@ async function compressPhoto(file, baseName) {
 
 // ---- Character cards ------------------------------------------------------
 function kidAgeField(n, selected) {
-  return `<label class="age-field">How old?
+  return `<label class="age-field"><span data-i18n="card.howOld">${t("card.howOld")}</span>
     <select name="fi-select-char${n}Age">
-      ${CHILD_AGES.map((a) => `<option value="${a.id}" ${a.id === (selected || "6-9") ? "selected" : ""}>${a.label}</option>`).join("")}
+      ${CHILD_AGES.map((a) => `<option value="${a.id}" ${a.id === (selected || "6-9") ? "selected" : ""} data-i18n="age.${a.id}">${t("age." + a.id)}</option>`).join("")}
     </select>
   </label>`;
 }
@@ -183,22 +193,22 @@ function buildCard(index) {
   card.className = "character-card";
   card.dataset.index = String(index);
   const roleOpts = ROLES.map((r) =>
-    `<option value="${r.id}" ${r.id === "child" ? "selected" : ""}>${r.label}</option>`
+    `<option value="${r.id}" ${r.id === "child" ? "selected" : ""} data-i18n="role.${r.id}">${t("role." + r.id)}</option>`
   ).join("");
   // The file input has no name on purpose: compressed copies are added on submit as fi-file-photos[].
   card.innerHTML = `
-    <h3>Character ${n}</h3>
-    <label>Who is this?
+    <h3 data-i18n="card.title" data-i18n-vars='{"n":${n}}'>${t("card.title", { n })}</h3>
+    <label><span data-i18n="card.who">${t("card.who")}</span>
       <select name="fi-select-char${n}Role" class="role-select">${roleOpts}</select>
     </label>
-    <label>Name
-      <input type="text" name="fi-text-char${n}Name" class="name-input" maxlength="40" required placeholder="Name" />
+    <label><span data-i18n="card.name">${t("card.name")}</span>
+      <input type="text" name="fi-text-char${n}Name" class="name-input" maxlength="40" required placeholder="${t("card.namePlaceholder")}" data-i18n-placeholder="card.namePlaceholder" />
     </label>
     <div class="age-wrap">${kidAgeField(n, "6-9")}</div>
-    <label>Photo
+    <label><span data-i18n="card.photo">${t("card.photo")}</span>
       <input type="file" class="photo-input" accept="image/*" required />
     </label>
-    <p class="hint photo-status">Close-up of the face (or pet’s head).</p>
+    <p class="hint photo-status" data-i18n="photo.hint">${t("photo.hint")}</p>
   `;
   const roleSel = card.querySelector(".role-select");
   const ageWrap = card.querySelector(".age-wrap");
@@ -215,28 +225,28 @@ function buildCard(index) {
     photoStatus.classList.remove("warn");
     if (!files.length) {
       photoJobs[index] = null;
-      photoStatus.textContent = "Close-up of the face (or pet’s head).";
+      I18N.set(photoStatus, "photo.hint");
       return;
     }
     if (files.length > MAX_PHOTOS_PER_CHARACTER) {
       photoJobs[index] = null;
-      fileInput.setCustomValidity("Please choose one photo for this person.");
+      fileInput.setCustomValidity(t("photo.oneOnlyBubble"));
       fileInput.reportValidity();
-      photoStatus.textContent = "Just one photo per person, please.";
+      I18N.set(photoStatus, "photo.oneOnly");
       photoStatus.classList.add("warn");
       return;
     }
-    photoStatus.textContent = "Preparing photos…";
+    I18N.set(photoStatus, "photo.preparing");
     // Compress right away so problems show up here, not at the end.
     const job = Promise.all(files.map((f, k) => compressPhoto(f, `c${n}-${k + 1}`)));
     photoJobs[index] = job;
     job.then((packed) => {
       if (photoJobs[index] !== job) return; // superseded by a newer selection
       const size = packed.reduce((sum, f) => sum + f.size, 0);
-      photoStatus.textContent = `${packed.length} photo${packed.length > 1 ? "s" : ""} ready (${formatMB(size)}).`;
+      I18N.set(photoStatus, packed.length > 1 ? "photo.readyMany" : "photo.readyOne", { count: packed.length, size: formatMB(size) });
     }).catch((err) => {
       if (photoJobs[index] !== job) return;
-      photoStatus.textContent = err.message;
+      I18N.setText(photoStatus, err.message);
       photoStatus.classList.add("warn");
     });
   });
@@ -248,8 +258,9 @@ function showPerson(i) {
   [...peopleEl.children].forEach((el, idx) => {
     el.classList.toggle("hidden", idx !== i);
   });
-  personProgress.textContent = totalPeople === 1 ? "Who is in the book" : `Character ${i + 1} of ${totalPeople}`;
-  nextPersonBtn.textContent = i === totalPeople - 1 ? "Continue to the story" : "Next character";
+  if (totalPeople === 1) I18N.set(personProgress, "progress.single");
+  else I18N.set(personProgress, "progress.many", { n: i + 1, total: totalPeople });
+  I18N.set(nextPersonBtn, i === totalPeople - 1 ? "btn.toStory" : "btn.nextChar");
 }
 
 // Adds or removes cards to match totalPeople, keeping what was already filled in.
@@ -279,10 +290,10 @@ async function checkCharacter(i, focus) {
     }
     return msg;
   };
-  if (!nameEl.value) return fail(nameEl, "Please add a name.");
-  if (!fileInput.files || !fileInput.files.length) return fail(fileInput, "Please add at least one photo.");
+  if (!nameEl.value) return fail(nameEl, t("check.charName"));
+  if (!fileInput.files || !fileInput.files.length) return fail(fileInput, t("check.photoMissing"));
   if (fileInput.files.length > MAX_PHOTOS_PER_CHARACTER || !photoJobs[i]) {
-    return fail(fileInput, "Please choose one photo.");
+    return fail(fileInput, t("check.photoOne"));
   }
   try {
     await photoJobs[i];
@@ -334,28 +345,28 @@ function friendlyError(error) {
   const code = Number(error && error.code);
   const msg = String((error && error.message) || "");
   if (code === 429 || /rate|too many/i.test(msg)) {
-    return "Please wait about 30 seconds and press Send again.";
+    return t("err.rate");
   }
   if (code === 413 || /too large|size/i.test(msg)) {
-    return "The photos are too large together. Try fewer photos per character.";
+    return t("err.tooLargeTotal");
   }
   if (code === 0 || /network|failed to fetch/i.test(msg)) {
-    return "Could not reach the server. Check your connection and try again.";
+    return t("err.network");
   }
   if (code === 401 || code === 403 || code === 404) {
-    return "The form is not set up correctly on our side. Please email us instead.";
+    return t("err.setup");
   }
   if (code === 400 || code === 422) {
-    return "Something in the form was not accepted" + (msg ? ": " + msg : ".") + " Please check and try again.";
+    return msg ? t("err.rejectedMsg", { msg }) : t("err.rejected");
   }
-  return "Sorry, something went wrong" + (msg ? " (" + msg + ")" : "") + ". Please try again.";
+  return msg ? t("err.genericMsg", { msg }) : t("err.generic");
 }
 
 function setSending(on) {
   sending = on;
   go.disabled = on;
   document.getElementById("back-book").disabled = on;
-  go.textContent = on ? "Sending…" : "Request my sample ebook";
+  I18N.set(go, on ? "btn.sending" : "btn.request");
   form.setAttribute("aria-busy", on ? "true" : "false");
 }
 
@@ -364,11 +375,11 @@ form.addEventListener("submit", async (event) => {
   if (sending) return;
 
   if (!FORM_READY) {
-    setStatus("This form is not connected yet: add the Forminit form ID in config.js.", "warn");
+    setStatus(t("status.notConnected"), "warn");
     return;
   }
   if (typeof window.Forminit !== "function") {
-    setStatus("The sending service did not load (an ad blocker can cause this). Please disable it for this page, or reload.", "warn");
+    setStatus(t("status.sdkMissing"), "warn");
     return;
   }
 
@@ -379,10 +390,10 @@ form.addEventListener("submit", async (event) => {
   }
 
   setSending(true);
-  setStatus("Checking your details…");
+  setStatus(t("status.checking"));
   try {
     // 1. Validate contact details (visible above every step).
-    if (!validateContact()) throw new Error("Please check your details above.");
+    if (!validateContact()) throw new Error(t("status.checkDetails"));
 
     // 2. Validate every character and collect the compressed photos.
     const photos = [];
@@ -393,7 +404,7 @@ form.addEventListener("submit", async (event) => {
         stepBook.classList.add("hidden");
         stepPerson.classList.remove("hidden");
         await checkCharacter(i, true); // show the bubble on that card
-        throw new Error(`Character ${i + 1}: ${problem}`);
+        throw new Error(t("status.charProblem", { n: i + 1, problem }));
       }
       const card = peopleEl.children[i];
       const name = card.querySelector(".name-input").value.trim();
@@ -404,15 +415,16 @@ form.addEventListener("submit", async (event) => {
       packed.forEach((f, k) => {
         photos.push(new File([f], `c${i + 1}-${slug(name)}-${k + 1}${f.name.slice(f.name.lastIndexOf("."))}`, { type: f.type }));
       });
-      const role = roleSel.options[roleSel.selectedIndex].text;
-      const age = ageSel ? ", " + ageSel.options[ageSel.selectedIndex].text : "";
+      // English labels for the submission, whatever language the page is shown in.
+      const role = ROLES.find((r) => r.id === roleSel.value).label;
+      const age = ageSel ? ", " + CHILD_AGES.find((a) => a.id === ageSel.value).label : "";
       castLines.push(`${i + 1}. ${name} (${role}${age}) — ${packed.length} photo${packed.length > 1 ? "s" : ""}`);
     }
 
     // 3. Total size check (Forminit limit: 25 MB per submission).
     const total = photos.reduce((sum, f) => sum + f.size, 0);
     if (total > MAX_TOTAL_BYTES) {
-      throw new Error(`The photos add up to ${formatMB(total)}; the limit is ${formatMB(MAX_TOTAL_BYTES)}. Please use fewer photos.`);
+      throw new Error(t("status.totalTooBig", { total: formatMB(total), limit: formatMB(MAX_TOTAL_BYTES) }));
     }
 
     // 4. Build the submission. Named fields come straight from the form
@@ -422,9 +434,12 @@ form.addEventListener("submit", async (event) => {
     if (!data.get("fi-sender-company")) data.delete("fi-sender-company");
     if (!data.get("fi-text-notes")) data.delete("fi-text-notes");
     data.set("fi-text-cast", castLines.join("\n"));
+    // Page language the visitor used (e.g. "pt-PT"), so the book can be made in it.
+    // Not "fi-text-language": Forminit rejects duplicate names and fi-select-language exists.
+    data.set("fi-text-siteLanguage", I18N.lang);
     photos.forEach((f) => data.append("fi-file-photos[]", f, f.name));
 
-    setStatus(`Sending ${photos.length} photo${photos.length > 1 ? "s" : ""} (${formatMB(total)})… please keep this page open.`);
+    setStatus(t(photos.length > 1 ? "status.sendingMany" : "status.sendingOne", { count: photos.length, size: formatMB(total) }));
     const { error } = await new window.Forminit().submit(FORM_ID, data);
     if (error) {
       console.error("Forminit error", error);
@@ -432,7 +447,12 @@ form.addEventListener("submit", async (event) => {
     }
     window.location.href = "thanks.html";
   } catch (err) {
-    setStatus(err.message || "Could not send. Please try again.", "warn");
+    setStatus(err.message || t("status.couldNotSend"), "warn");
     setSending(false);
   }
 });
+
+// ---- Language switch --------------------------------------------------------
+// i18n.js has already re-translated everything marked with data-i18n; only the
+// tab title set above needs refreshing.
+document.addEventListener("i18n:change", setBrandTitle);
