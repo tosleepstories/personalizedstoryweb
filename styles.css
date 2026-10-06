@@ -48,11 +48,13 @@ a { color: var(--gold-deep); }
 /* Language picker: small, top right of the masthead (filled in by i18n.js) */
 .lang-picker { position: absolute; top: 0; right: 20px; }
 .lang-picker select {
-  width: auto; margin: 0; padding: 2px 6px;
-  font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
-  color: #e9c77a; background: transparent; border: 1px solid rgba(233, 199, 122, 0.4); border-radius: 999px; cursor: pointer;
+  display: inline-block; width: auto; min-width: 0; height: auto; margin: 0; padding: 2px 14px 2px 4px;
+  -webkit-appearance: none; appearance: none;
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; line-height: 1.2;
+  color: #e9c77a; border: 0; border-radius: 0; box-shadow: none; cursor: pointer;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23e9c77a'/%3E%3C/svg%3E") no-repeat right 2px center;
 }
-.lang-picker select:hover { border-color: #e9c77a; }
+.lang-picker select:hover, .lang-picker select:focus { color: #fff; box-shadow: none; }
 .lang-picker option { color: var(--ink); background: #fff; }
 
 /* ---- Form + samples ---- */
