@@ -1,4 +1,12 @@
-# Trial website (GitHub Pages)
+# Free sample ebook request page (GitHub Pages)
+
+A single static page: a short header, the request form, a strip of real sample covers and a footer.
+Partners send names and photos, you make the book and email them the finished sample. `thanks.html` is
+where the form lands after a successful send. Live at `partners.tosleepstories.com` (see `CNAME`).
+
+Form steps: 1) how many people/pets (default 1) plus contact details, 2) one card per character
+(name, role, age for children, 1–3 photos), 3) story setting, read-aloud age, language, notes.
+Sample covers in `assets/` are compressed web copies of the partner sample-kit books.
 
 GitHub only hosts the page. It cannot store photos or emails. Submissions go to **Forminit** (formerly Getform, free plan), which emails you and keeps the files. Plain static files, no build step.
 
@@ -30,7 +38,8 @@ Create a new **public** repo (or a `gh-pages` branch) that contains only this fo
 - `styles.css`
 - `form.js`
 - `config.js`
-- `assets/sample-cover.jpg`
+- `CNAME`
+- `assets/` (sample covers and logo)
 
 GitHub → Settings → Pages → Deploy from branch `main` / `/ (root)`.
 

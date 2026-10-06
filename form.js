@@ -1,4 +1,4 @@
-// Trial intake form → Forminit (https://forminit.com).
+// Free sample ebook request form → Forminit (https://forminit.com).
 // Static site, no build step. Photos are shrunk in the browser before upload.
 
 const ROLES = [
@@ -46,14 +46,14 @@ const setupWarn = document.getElementById("setup-warn");
 const nameInput = form.elements["fi-sender-fullName"];
 const emailInput = form.elements["fi-sender-email"];
 
-let totalPeople = 3;
+let totalPeople = 1; // default; the real value is read from #char-count on the first step
 let currentPerson = 0;
 let sending = false;
 // photoJobs[i] = Promise<File[]> of already-compressed photos for character i.
 const photoJobs = [];
 
 if (SITE.brand) {
-  document.title = SITE.brand + " — trial";
+  document.title = SITE.brand + " — free sample ebook";
   const brand = document.getElementById("brand-eyebrow");
   if (brand) brand.textContent = SITE.brand;
 }
@@ -253,8 +253,8 @@ function showPerson(i) {
   [...peopleEl.children].forEach((el, idx) => {
     el.classList.toggle("hidden", idx !== i);
   });
-  personProgress.textContent = `Character ${i + 1} of ${totalPeople}`;
-  nextPersonBtn.textContent = i === totalPeople - 1 ? "Continue to the book" : "Next character";
+  personProgress.textContent = totalPeople === 1 ? "Who is in the book" : `Character ${i + 1} of ${totalPeople}`;
+  nextPersonBtn.textContent = i === totalPeople - 1 ? "Continue to the story" : "Next character";
 }
 
 // Adds or removes cards to match totalPeople, keeping what was already filled in.
@@ -360,7 +360,7 @@ function setSending(on) {
   sending = on;
   go.disabled = on;
   document.getElementById("back-book").disabled = on;
-  go.textContent = on ? "Sending…" : "Send trial request";
+  go.textContent = on ? "Sending…" : "Request my sample ebook";
   form.setAttribute("aria-busy", on ? "true" : "false");
 }
 

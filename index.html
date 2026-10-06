@@ -3,43 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Personalized Story — trial</title>
+  <title>Request your free sample ebook | To Sleep Stories</title>
+  <meta name="description" content="Send a few family photos and names, and we'll email you a finished personalised, printable picture ebook starring them." />
+  <meta name="theme-color" content="#1d2742" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="analytics.js"></script>
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <p class="eyebrow" id="brand-eyebrow">My Personalized Story</p>
-      <h1>A picture book that looks like their family</h1>
-      <p class="lede">
-        The child, the baby, the pet — painted as themselves. This page is a trial:
-        send photos and names, and we email you a finished PDF.
-      </p>
-    </header>
+  <header class="masthead night">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="container masthead-inner">
+      <p class="brand"><img src="assets/logo-mark.png" alt="" width="64" height="24" /><span id="brand-eyebrow">To Sleep Stories</span></p>
+      <h1>Request your free sample ebook</h1>
+      <p class="lede">Send a few photos and names, and we’ll email you a finished, printable picture ebook (PDF) starring that family.</p>
+    </div>
+  </header>
 
-    <section class="card">
-      <h2>A sample</h2>
-      <p class="lede">Same kind of book you would get. Faces from family photos, story written for that family.</p>
-      <figure class="cover-hero">
-        <img src="assets/sample-cover.jpg" alt="Sample personalized picture-book cover" />
-      </figure>
-    </section>
-
-    <section class="card">
-      <h2>How this trial works</h2>
-      <ol class="steps">
-        <li><strong>You send photos</strong> Names, who is in the book, and a work email.</li>
-        <li><strong>We make the book</strong> This trial is made for you. You are not running the system yourself.</li>
-        <li><strong>We email the PDF</strong> Usually within two working days. The live product on your site would return print files the same way, without us in the customer’s inbox.</li>
-      </ol>
-    </section>
-
-    <form id="form" class="card" novalidate>
-      <h2>Request a trial book</h2>
-      <p class="hint">Close, sharp photos of faces (or a pet’s head). A tiny chat picture will not look like them.</p>
-
+  <main class="container layout">
+    <form id="form" class="form-card" novalidate>
       <p id="setup-warn" class="hint warn hidden">
-        The form is not connected yet. Add your Forminit form ID in <code>config.js</code> — see the README.
+        The form is not connected yet. Add your Forminit form ID in <code>config.js</code>. See the README.
       </p>
 
       <!-- Honeypot: hidden from people, bots tend to fill it. Forminit rejects
@@ -50,44 +34,48 @@
 
       <!-- Field names follow Forminit's fi-{type}-{name} scheme; anything else is dropped. -->
 
-      <label>
-        Your name
-        <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
-      </label>
-      <label>
-        Company
-        <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
-      </label>
-      <label>
-        Work email — where we send the book
-        <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
-      </label>
-
+      <!-- Step 1: how many characters (asked first), then contact details -->
       <div id="step-count">
         <label>
-          How many characters?
+          How many people and pets are in the book?
           <select id="char-count" name="fi-select-characterCount">
-            <option value="1">1</option>
+            <option value="1" selected>1</option>
             <option value="2">2</option>
-            <option value="3" selected>3</option>
+            <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
         </label>
-        <p class="hint">Maximum 6. People and pets.</p>
+        <div class="row">
+          <label>
+            Your name
+            <input type="text" name="fi-sender-fullName" maxlength="80" autocomplete="name" required />
+          </label>
+          <label>
+            Company
+            <input type="text" name="fi-sender-company" maxlength="80" autocomplete="organization" />
+          </label>
+        </div>
+        <label>
+          Work email (where we send the book)
+          <input type="email" name="fi-sender-email" maxlength="120" autocomplete="email" required />
+        </label>
         <button type="button" id="start-people">Continue</button>
       </div>
 
+      <!-- Step 2: one card per character -->
       <div id="step-person" class="hidden">
-        <p id="person-progress" class="eyebrow">Character 1 of 3</p>
+        <p id="person-progress" class="step-label">Character 1 of 1</p>
+        <p class="hint">Close, sharp photos of faces (or a pet’s head) work best. A tiny chat picture won’t look like them.</p>
         <div id="people"></div>
         <div class="step-nav">
           <button type="button" class="secondary" id="prev-person">Back</button>
-          <button type="button" id="next-person">Next character</button>
+          <button type="button" id="next-person">Continue to the story</button>
         </div>
       </div>
 
+      <!-- Step 3: story options and send -->
       <div id="step-book" class="hidden">
         <label>
           Story setting
@@ -126,19 +114,31 @@
           Anything we should know
           <textarea name="fi-text-notes" maxlength="600" placeholder="Optional"></textarea>
         </label>
-        <p class="hint">Photos are only used to make this trial book. They are not used to train models and are not posted publicly.</p>
         <div class="step-nav">
           <button type="button" class="secondary" id="back-book">Back</button>
-          <button type="submit" id="go">Send trial request</button>
+          <button type="submit" id="go">Request my sample ebook</button>
         </div>
         <p id="form-status" class="hint" role="status" aria-live="polite"></p>
       </div>
+
+      <p class="privacy-note">Photos are used only to make your book and are deleted after use. To ask for deletion, email <a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a>.</p>
     </form>
 
-    <footer>
-      <p>Trial only. The finished product sits on your site: customer uploads, you print and ship, they never email us.</p>
-    </footer>
+    <aside class="samples" aria-label="Sample covers">
+      <p class="samples-title">Real sample ebooks</p>
+      <ul>
+        <li><img src="assets/cover-forest-circus.jpg" width="800" height="800" alt="Sample cover: Ben's One-Dog Forest Circus (Now With Mud)" /></li>
+        <li><img src="assets/cover-sock-museum.jpg" width="800" height="800" alt="Sample cover: Ben's Sock Museum and the Great Bubu Wetting" /></li>
+        <li><img src="assets/cover-mega-sprinkler.jpg" width="800" height="800" alt="Sample cover: Ben's Mega Sprinkler and the Great Tomato Soaking" /></li>
+        <li><img src="assets/cover-root-olympics.jpg" width="800" height="800" alt="Sample cover: Ben's Root Olympics (Bubu is Winning)" /></li>
+      </ul>
+    </aside>
   </main>
+
+  <footer class="footer">
+    <p class="container"><a href="mailto:hello@tosleepstories.com">hello@tosleepstories.com</a> · <a href="https://tosleepstories.com">tosleepstories.com</a></p>
+  </footer>
+
   <!-- Forminit browser SDK (no API key needed for Public forms) -->
   <script src="https://forminit.com/sdk/v1/forminit.js"></script>
   <script src="config.js"></script>
