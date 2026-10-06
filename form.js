@@ -3,13 +3,8 @@
 
 const ROLES = [
   { id: "child", label: "Child" },
-  { id: "parent", label: "Parent" },
-  { id: "grandparent", label: "Grandparent" },
-  { id: "uncle", label: "Uncle" },
-  { id: "aunt", label: "Aunt" },
-  { id: "cousin", label: "Cousin" },
+  { id: "adult", label: "Adult" },
   { id: "pet", label: "Pet" },
-  { id: "other", label: "Other" },
 ];
 const CHILD_AGES = [
   { id: "baby", label: "Baby (under 1)" },
@@ -200,15 +195,15 @@ function buildCard(index) {
       <input type="text" name="fi-text-char${n}Name" class="name-input" maxlength="40" required placeholder="Name" />
     </label>
     <div class="age-wrap">${kidAgeField(n, "6-9")}</div>
-    <label>Photos (1–${MAX_PHOTOS_PER_CHARACTER})
-      <input type="file" class="photo-input" accept="image/*" multiple required />
+    <label>Photo
+      <input type="file" class="photo-input" accept="image/*" required />
     </label>
-    <p class="hint photo-status">Close-up of the face (or pet’s head). More than one angle helps.</p>
+    <p class="hint photo-status">Close-up of the face (or pet’s head).</p>
   `;
   const roleSel = card.querySelector(".role-select");
   const ageWrap = card.querySelector(".age-wrap");
   roleSel.addEventListener("change", () => {
-    const kid = roleSel.value === "child" || roleSel.value === "cousin";
+    const kid = roleSel.value === "child";
     ageWrap.innerHTML = kid ? kidAgeField(n, "6-9") : "";
   });
 
@@ -220,14 +215,14 @@ function buildCard(index) {
     photoStatus.classList.remove("warn");
     if (!files.length) {
       photoJobs[index] = null;
-      photoStatus.textContent = "Close-up of the face (or pet’s head). More than one angle helps.";
+      photoStatus.textContent = "Close-up of the face (or pet’s head).";
       return;
     }
     if (files.length > MAX_PHOTOS_PER_CHARACTER) {
       photoJobs[index] = null;
-      fileInput.setCustomValidity(`Please choose up to ${MAX_PHOTOS_PER_CHARACTER} photos for this character.`);
+      fileInput.setCustomValidity("Please choose one photo for this person.");
       fileInput.reportValidity();
-      photoStatus.textContent = `Too many photos — up to ${MAX_PHOTOS_PER_CHARACTER}, please.`;
+      photoStatus.textContent = "Just one photo per person, please.";
       photoStatus.classList.add("warn");
       return;
     }
@@ -287,7 +282,7 @@ async function checkCharacter(i, focus) {
   if (!nameEl.value) return fail(nameEl, "Please add a name.");
   if (!fileInput.files || !fileInput.files.length) return fail(fileInput, "Please add at least one photo.");
   if (fileInput.files.length > MAX_PHOTOS_PER_CHARACTER || !photoJobs[i]) {
-    return fail(fileInput, `Please choose 1–${MAX_PHOTOS_PER_CHARACTER} photos.`);
+    return fail(fileInput, "Please choose one photo.");
   }
   try {
     await photoJobs[i];
